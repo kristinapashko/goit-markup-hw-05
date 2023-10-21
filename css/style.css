@@ -570,6 +570,10 @@ body ul {
   margin-right: 120px;
 }
 
+.footer-subscribe-box {
+  margin-left: 80px;
+}
+
 .footer-subscribe-form {
   display: flex;
   align-items: center;
@@ -633,7 +637,6 @@ body ul {
   box-shadow: 0px 4px 4px 0px #00000026;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 /* footer */
 
 .backdrop {
