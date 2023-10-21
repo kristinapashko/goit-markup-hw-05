@@ -570,8 +570,6 @@ body ul {
   margin-right: 120px;
 }
 
-.footer-subscribe-box {
-}
 .footer-subscribe-form {
   display: flex;
   align-items: center;
@@ -635,6 +633,7 @@ body ul {
   box-shadow: 0px 4px 4px 0px #00000026;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 /* footer */
 
 .backdrop {
@@ -647,6 +646,8 @@ body ul {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-open {
   opacity: 1;
@@ -654,7 +655,7 @@ body ul {
   pointer-events: auto;
 }
 .modal {
-  min-width: 408px;
+  width: 408px;
   min-height: 584px;
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
@@ -663,17 +664,41 @@ body ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 1px 1px 0px #00000024, 0px 1px 3px 0px #0000001f,
+    0px 1px 2px 0px #00000033;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-close-btn {
-  background: linear-gradient(0deg, #e7e9fc, #e7e9fc);
   border: 1px solid #0000001a;
   position: absolute;
   top: 24px;
   right: 24px;
   border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e7e9fc;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-close-icon {
   fill: #2e2f42;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: #404bbf;
+  border: none;
+}
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
+  fill: #ffffff;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-text {
   font-size: 16px;
@@ -691,14 +716,14 @@ body ul {
 }
 
 .modal-input {
-  width: 360px;
+  width: 100%;
   height: 40px;
   border-radius: 4px;
   border: 1px solid #2e2f4266;
   padding-left: 38px;
   background-color: transparent;
   outline: transparent;
-  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-input:hover,
@@ -713,7 +738,7 @@ body ul {
 .modal-label {
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   text-align: left;
   color: #8e8f99;
@@ -721,7 +746,7 @@ body ul {
   margin-bottom: 4px;
 }
 .modal-send-btn {
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   padding: 16px 32px;
   border-radius: 4px;
@@ -737,7 +762,7 @@ body ul {
   color: #ffffff;
   border: 0;
   cursor: pointer;
-  margin-top: 24px;
+  margin-bottom: 24px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -769,11 +794,18 @@ body ul {
   position: relative;
 }
 
-.modal-field {
+.user-privacy-field {
+  margin-bottom: 24px;
 }
-.modal-label {
-}
+
 .comment-text-area {
+  width: 100%;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  text-align: left;
   width: 360px;
   height: 120px;
   border-radius: 4px;
@@ -782,9 +814,12 @@ body ul {
   background-color: transparent;
   outline: transparent;
   resize: none;
+  color: rgba(46, 47, 66, 0.4);
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.text-area-field {
+  margin-bottom: 16px;
+}
 .comment-text-area:hover,
 .comment-text-area:focus {
   border-color: #4d5ae5;
@@ -801,15 +836,15 @@ body ul {
 .check-text {
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.3;
+  line-height: 1.17;
   letter-spacing: 0.04em;
   text-align: left;
   color: #8e8f99;
-  display: flex;
   align-items: center;
 }
 
 .checkbox-link {
+  display: inline-flex;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.15;
@@ -819,15 +854,15 @@ body ul {
 }
 
 .terms-box {
-  display: block;
   width: 16px;
   height: 16px;
   border-radius: 2px;
   border: 1px solid #2e2f4266;
   margin-right: 8px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   fill: transparent;
@@ -835,11 +870,10 @@ body ul {
 
 .modal-check:checked + .check-text > .terms-box {
   background-color: #404bbf;
-  border: 1px solid #404bbf;
+  border: none;
   fill: #f4f4fd;
 }
 
-.modal-check {
-}
 .terms-box-icon {
+  display: inline-flex;
 }
